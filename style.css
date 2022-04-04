@@ -1,5 +1,10 @@
 body {
+  margin: 0;
+  height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
 }
 .start {
   width: 100%;
@@ -10,11 +15,20 @@ body {
 }
 button {
   height: 50px;
-  width: 10%;
+  width: 100px;
+  border-radius: 20px;
+  background: #0040ff;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3;
+  color: white;
 }
 h1 {
-  height: 10%;
-  width: 10%;
+  height: 30px;
+  width: 30px;
   color: red;
   text-align: center;
+  font-family: monospace;
+}
+canvas {
+  margin-left: 20px;
+  border-radius: 10px;
 }

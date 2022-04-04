@@ -1,5 +1,5 @@
-var BLOCK_SIZE = 40;
-var BLOCK_COUNT_H = 20;
+var BLOCK_SIZE = 50;
+var BLOCK_COUNT_H = 18;
 var BLOCK_COUNT_W = 30;
 var canvasHeight = BLOCK_SIZE * BLOCK_COUNT_H;
 var canvasWidth = BLOCK_SIZE * BLOCK_COUNT_W;
@@ -23,15 +23,15 @@ var wall;
 var grass;
 var apple;
 
+loadImage();
 function gameStart() {
   snack = {
-    body: [{ x: BLOCK_COUNT_H / 2, y: BLOCK_COUNT_H / 2 }],
+    body: [{ x: 5, y: 10 }],
     size: 5,
     direction: { x: 0, y: -1 },
   };
   direction = [1, 1, 1, 1, 1];
   animate = [0, 0, 0, 0, 0];
-  loadImage();
   putApple();
   updateScore(0);
   updateGameLevel(1);
@@ -190,7 +190,6 @@ function updateCanvas() {
 
   direction.pop();
   direction.unshift(direction[0]);
-
   for (var i = 0; i < animate.length; i++) {
     animate[i] = !animate[i];
   }
@@ -210,13 +209,15 @@ function updateCanvas() {
         image = animate[i] ? right : right_1;
         break;
     }
-    context.drawImage(
-      image,
-      snack.body[i].x * BLOCK_SIZE,
-      snack.body[i].y * BLOCK_SIZE,
-      BLOCK_SIZE,
-      BLOCK_SIZE
-    );
+    if (snack.body[i]) {
+      context.drawImage(
+        image,
+        snack.body[i].x * BLOCK_SIZE,
+        snack.body[i].y * BLOCK_SIZE,
+        BLOCK_SIZE,
+        BLOCK_SIZE
+      );
+    }
   }
   context.drawImage(
     people,
